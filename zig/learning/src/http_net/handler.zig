@@ -7,8 +7,8 @@ pub fn main() !void {
     var gpa = std.heap.DebugAllocator(.{}){};
     const allocator = gpa.allocator();
 
-    const handler = Handler;
-    var server = try httpz.Server(*Handler).init(allocator, .{.port = 8080} , &handler);
+    // const handler = Handler;
+    var server = try httpz.Server(*Handler).init(allocator, .{.port = 8080} , {});
     defer {
         server.stop();
         server.deinit();

@@ -16,11 +16,9 @@ fn zeroFilledSubarray(nums:[] const i32) i64 {
         if (num == 0 ){
             rs += steak + 1;
             steak += 1;
-            
         } else {
             steak = 0;
         }
-
     } 
     return rs;
 } 

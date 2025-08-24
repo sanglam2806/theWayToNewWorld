@@ -63,7 +63,9 @@
 
 Rootlessモード
 
- Docker’s daemon: like JVM , translate Client’s executed Commands into actionable operations within Docker environment
+ Docker’s daemon: 
+
+- like JVM , translate Client’s executed Commands into actionable operations within Docker environment
 
 Docker daemon function:
 
@@ -74,3 +76,23 @@ Docker daemon function:
 - push. & pull images from registry
 - Host operating system
 - Scalability and flexibility
+
+### Daemon Architecture:
+
+- Like client server:
+    - Client : docker desktop/ CLI
+    - Daemon: receive the required command from Client and actually execute them. The Result will be displayed back
+
+# DAEMON IN DOCKER AND PODMAN
+
+Daemon in docker like a hub, receive the required from Client, find the right container what client want. 
+
+In podman, without central Daemon, user can lead more complexity in certain Environment.
+
+## Rootless in Podman
+
+- Can created, executed, maintained from user without Root User Privileges.
+- Can add user layer protection
+- improve flexibility: enable dev, tester  to operate a shard of system
+- simple management
+- no root → Root User’s impact is restricted

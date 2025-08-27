@@ -10,12 +10,14 @@ pub fn main() !void {
     printMatrix(matrix);
 
     const a1 = [_]i32{1,2};
-    const a2 = [_]i32{1,2};
+    const a2 = [_]i32{5,8};
 
     // create slice of slice type, so we will have 2 dimension with that
     var dymaic =[_][]const i32 {
-        a1[0..],
-        a2[0..],
+        // a1[0..],
+        // a1[0..],
+        &a1,
+        &a2,
     };
     dynamicMatrix(dymaic[0..]);
 }

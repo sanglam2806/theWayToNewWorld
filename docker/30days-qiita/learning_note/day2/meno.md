@@ -26,4 +26,4 @@ podman exec -it <ContainerID>
 podman container checkpoint <ContainerID>
 
 # Restoring the container
-podma container restore <ContainerID>
+podma container restore <ContainerI>

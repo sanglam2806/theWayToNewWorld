@@ -28,6 +28,5 @@ public class FindMinimumAreaOne {
 
         return (topRight - topLeft + 1) * (bottomRight - bottomLeft + 1);
     }
-
 	
 }

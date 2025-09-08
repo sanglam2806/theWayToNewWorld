@@ -8,7 +8,7 @@ public class countSquares {
 		System.out.println("Hello Na-chan from Java dsa");
 	}	
 
-	public int countSquares(int[][] matrix) {
+	public static int countSquares(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
         int rs = 0;

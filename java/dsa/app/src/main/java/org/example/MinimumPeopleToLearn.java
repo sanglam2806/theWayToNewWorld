@@ -7,7 +7,6 @@ import java.util.Set;
 
 public class MinimumPeopleToLearn {
 	public int minimumTeachings(int n, int[][] languages, int[][] friendships) {
-		
 		// set people who need to learn languages
 		Set<Integer> personSet = new HashSet<>();
 
@@ -32,7 +31,6 @@ public class MinimumPeopleToLearn {
 				personSet.add(friend[0]);
 				personSet.add(friend[1]);
 			}
-
 		}
 
 		// find the max person can use one language of languages
@@ -45,7 +43,7 @@ public class MinimumPeopleToLearn {
 				max = Math.max(max, tmp[lang]);
 			}
 		}
+
 		return personSet.size() - max;
-        
     }
 }

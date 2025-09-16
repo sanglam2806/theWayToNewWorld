@@ -37,7 +37,6 @@ public class MaximumNumberOfWordsCanType {
 		for (char l : brokenLetters.toCharArray()) letterCheck[l - 97] = true;
 
 		boolean check = true;
-
 		for(char c : text.toCharArray()) {
 			if (c == ' ') {
 				check = true;
@@ -48,7 +47,6 @@ public class MaximumNumberOfWordsCanType {
 				rs--;
 			}
 		}
-
 		return rs;
 	}
 }

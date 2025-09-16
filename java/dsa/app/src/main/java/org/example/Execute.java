@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.List;
+
 import org.example.HashTablePro.LengthOfLongestSubString;
 
 public class Execute {
@@ -9,7 +11,8 @@ public class Execute {
 		// Hash table learn: 3. Longest Substring Without Repeating Characters
 		// executeHashTable3();
 		// executeSortVowels();
-		executeMaximumNumberOfWordsCanType();
+		// executeMaximumNumberOfWordsCanType();
+		executeReplaceNonCoprimes();
 
 	}
 
@@ -39,5 +42,17 @@ public class Execute {
 		System.out.println("Result is " + exe.canBeTypedWords(s, boeken));
 		System.out.println("Result is " + exe.canBeTypedWords2(s, boeken));
 	}
+
+	private static void executeReplaceNonCoprimes(){
+		ReplaceNonCoprimeNumbers exe = new ReplaceNonCoprimeNumbers(); 
+		int [] nums = {287,41,49,287,899,23,23,20677,5,825};
+
+		List<Integer> rs = exe.replaceNonCoprimes(nums);
+
+		for(int n : rs) {
+			System.out.println(n);
+		}
+	}
+
 }
 

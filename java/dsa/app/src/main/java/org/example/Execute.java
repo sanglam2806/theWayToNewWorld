@@ -1,21 +1,48 @@
 package org.example;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.example.HashTablePro.LengthOfLongestSubString;
+import org.example.SlidingWindows.MinimumSizeArraySum;
 
 public class Execute {
 	public static void main(String[] args) {
 		System.out.println("Hello Na-chan from Java DSA");
 
+		TreeSet<Integer> treeSet = new TreeSet<>();
+		treeSet.add(1);
+		treeSet.add(5);
+		treeSet.add(2);
+
+		// System.out.println("The last element is " + treeSet.last());
+
 		// Hash table learn: 3. Longest Substring Without Repeating Characters
 		// executeHashTable3();
 		// executeSortVowels();
 		// executeMaximumNumberOfWordsCanType();
-		executeReplaceNonCoprimes();
+		// executeReplaceNonCoprimes();
+		// exeFoodRatings();
+		executeMinimumSizeArraySum();
 
 	}
 
+	private static void executeMinimumSizeArraySum() {
+		int [] nums = {1,4,4};
+		MinimumSizeArraySum exe = new MinimumSizeArraySum(); 
+		System.out.println("result is " + exe.minSubArrayLen(4, nums));
+	}
+
+	private static void exeFoodRatings() {
+		String[] foods = {"xxdcg","wfqdeytt","jqmfm","ukqbjikyx","aymciznrnw","qhjjrvr","wzcinxg","ikxj"};
+		String[] cuisines = {"lruhtqy","lruhtqy","lruhtqy","lruhtqy","lruhtqy","lruhtqy","lruhtqy","lruhtqy"}; 
+		int[] ratings = {8,6,1,17,20,2,17,14};
+		FoodRatings  foodRatings = new FoodRatings(foods, cuisines, ratings);  
+		foodRatings.changeRating("wfqdeytt",17);
+		foodRatings.changeRating("aymciznrnw",9);
+		System.out.println(foodRatings.highestRated("lruhtqy"));
+	}
 
 	private static void executeHashTable3 () {
 		LengthOfLongestSubString ht3 = new LengthOfLongestSubString();

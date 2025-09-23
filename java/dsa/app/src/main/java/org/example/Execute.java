@@ -24,8 +24,17 @@ public class Execute {
 		// executeMaximumNumberOfWordsCanType();
 		// executeReplaceNonCoprimes();
 		// exeFoodRatings();
-		executeMinimumSizeArraySum();
+		// executeMinimumSizeArraySum();
+		executeCompareVersionNUmber();
 
+	}
+
+	private static void executeCompareVersionNUmber(){
+		CompareVersionNumber exe = new CompareVersionNumber();
+		String s1 = "1.01";
+		String s2 = "1";
+
+		System.out.println(exe.compareVersion(s1, s2));
 	}
 
 	private static void executeMinimumSizeArraySum() {

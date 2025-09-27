@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 import org.example.HashTablePro.LengthOfLongestSubString;
 import org.example.SlidingWindows.MinimumSizeArraySum;
+import org.example.daily.ValidTriangleNumber;
 
 public class Execute {
 	public static void main(String[] args) {
@@ -25,8 +26,15 @@ public class Execute {
 		// executeReplaceNonCoprimes();
 		// exeFoodRatings();
 		// executeMinimumSizeArraySum();
-		executeCompareVersionNUmber();
+		// executeCompareVersionNUmberc();
+		executeValidTriangleNumber();
 
+	}
+
+	private static void executeValidTriangleNumber() {
+		ValidTriangleNumber exe = new ValidTriangleNumber();
+		int[] nums = {2,2,3,4};
+		System.out.println(exe.triangleNumber(nums));
 	}
 
 	private static void executeCompareVersionNUmber(){

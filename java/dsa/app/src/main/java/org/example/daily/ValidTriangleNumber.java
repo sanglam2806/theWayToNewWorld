@@ -25,4 +25,25 @@ public class ValidTriangleNumber {
 		}
 		return count;
 	}
+
+	public int triangleNumber2(int[] numbers) {
+		int count = 0;
+		Arrays.sort(numbers);
+
+		for(int k = numbers.length -1 ; k > 1; k--) {
+			int i = 0;
+			int j = k - 1;
+
+			while(i < j) {
+				if( numbers[i] + numbers[j] > numbers[k]){
+					System.out.println("k = "+ k +" j = "+j);
+					count+= j - i;
+					j--;
+				} else {
+					i++;
+				}
+			}
+		}
+		return count;
+	}
 }

@@ -34,7 +34,7 @@ public class Execute {
 	private static void executeValidTriangleNumber() {
 		ValidTriangleNumber exe = new ValidTriangleNumber();
 		int[] nums = {2,2,3,4};
-		System.out.println(exe.triangleNumber2(nums));
+		System.out.println(exe.triangleNumber3(nums));
 	}
 
 	private static void executeCompareVersionNUmber(){

@@ -30,13 +30,13 @@ public class ValidTriangleNumber {
 		int count = 0;
 		Arrays.sort(numbers);
 
-		for(int k = numbers.length -1 ; k > 1; k--) {
+		for(int k = numbers.length -1; k > 1; k--) {
 			int i = 0;
 			int j = k - 1;
 
 			while(i < j) {
 				if( numbers[i] + numbers[j] > numbers[k]){
-					System.out.println("k = "+ k +" j = "+j);
+					// System.out.println("k = "+ k +" j = "+j);
 					count+= j - i;
 					j--;
 				} else {
@@ -45,5 +45,28 @@ public class ValidTriangleNumber {
 			}
 		}
 		return count;
+	}
+
+	public int triangleNumber3(int[] nums){
+		int rs = 0;
+		Arrays.sort(nums);
+
+		for(int i = 0; i < nums.length - 1; i++){
+			int j = i + 1;
+			int k = nums.length - 1;
+
+			while (j < nums.length - 1) {
+				if (nums[i] + nums[j] > nums[k] && j < k) {
+					System.out.println("k = "+ k +" j = "+j);
+					rs += k - j;
+					k--;
+				} else {
+					j++;
+					k = nums.length -1;
+				}
+			}
+		}
+
+		return rs;
 	}
 }

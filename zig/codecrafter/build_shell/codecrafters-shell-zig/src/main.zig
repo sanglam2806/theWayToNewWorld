@@ -5,6 +5,8 @@ var stdin = std.fs.File.stdin().readerStreaming(&.{});
 // if went wirte file to disk (log file,..) we can use Writer interface
 var stdout = std.fs.File.stdout().writerStreaming(&.{});
 
+const Allocator = std.mem.Allocator;
+
 const COMMAND = enum {
     TYPE,
     ECHO,
@@ -22,8 +24,12 @@ fn parseCommand(command :[]const u8) COMMAND {
 }
 
 pub fn main() !void {
+    var gpa = std.heap.DebugAllocator(.{}){}; 
+    defer _ = gpa.deinit();
+
     // Uncomment this block to pass the first stage
     while(true) {
+        const allocator= gpa.allocator();
         std.debug.print("na:$ ", .{});
 
         // max size buffer
@@ -38,7 +44,7 @@ pub fn main() !void {
         const args = splitString.rest();
 
         try switch (parseCommand(command)) {
-            .TYPE => handleType(args),
+            .TYPE => handleType(allocator ,args),
             .CAT => handleCat(args),
             .ECHO => handleEcho(args),
             .EXIT => handleExit(args),
@@ -60,14 +66,45 @@ fn handleExit(args :[]const u8) void{
     std.process.exit(args[0] - '0');
 }
 
-fn handleType(args: []const u8) !void {
+fn handleType(allocator: Allocator, args: []const u8) !void {
+    if (std.mem.eql(u8, args, "")) return try stdout.interface.print("\n", .{});
+
+    var env = try std.process.getEnvMap(allocator);
+    defer _ = env.deinit();
+
+    const path = env.get("PATH");
+
+    var dirs = std.mem.splitScalar(u8, path orelse ":" , ':');
+
     var cmds = std.mem.splitScalar(u8, args, ' ');
     while (cmds.next()) |cmd| {
-        switch (parseCommand(cmd)) {
-            .ECHO, .EXIT, .TYPE => std.debug.print("{s} is a shell builtin\n", .{cmd}),
-            .CAT => std.debug.print("{s} is /bin/cat\n", .{cmd}),
-            .UNKNOW => std.debug.print("{s}: not found\n", .{cmd}), 
-        }
-    }
+        try switch (parseCommand(cmd)) {
+            .ECHO, .EXIT, .TYPE => stdout.interface.print("{s} is a shell builtin\n", .{cmd}),
+            else => {
+                while (dirs.next()) |dir| {
+                    var folder = std.fs.cwd().openDir(dir, .{.iterate = true}) catch {
+                        continue;
+                    }; 
+                    defer folder.close();
 
+                    var walker = try folder.walk(allocator);
+                    defer _ =walker.deinit();
+
+                    while(true){
+                        const entry = walker.next() catch {
+                            break;
+                        };
+
+                        if (entry == null) break;
+
+                        if(std.mem.eql(u8, entry.?.basename, cmd)) {
+                            return try stdout.interface.print("{0s} is {1s}/{0s}\n", .{entry.?.basename, dir});
+                        }
+                    }
+                }
+
+                return try stdout.interface.print("{s}: not found\n", .{cmd});
+            },
+        };
+    }
 }

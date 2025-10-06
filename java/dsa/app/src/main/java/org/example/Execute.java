@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import org.example.HashTablePro.LengthOfLongestSubString;
 import org.example.SlidingWindows.MinimumSizeArraySum;
 import org.example.daily.ValidTriangleNumber;
+import org.example.dp.MaxNumberOfSegment;
 
 public class Execute {
 	public static void main(String[] args) {
@@ -27,8 +28,17 @@ public class Execute {
 		// exeFoodRatings();
 		// executeMinimumSizeArraySum();
 		// executeCompareVersionNUmberc();
-		executeValidTriangleNumber();
+		// executeValidTriangleNumber();
+		exeMaxNumberSegment();
 
+	}
+
+	private static void exeMaxNumberSegment(){
+		MaxNumberOfSegment exe = new MaxNumberOfSegment();
+		int n = 11; 
+    	int x = 2, y = 3, z = 5;  
+
+		System.out.println("rs = " +exe.maxCutSize(n, x, y, z));
 	}
 
 	private static void executeValidTriangleNumber() {

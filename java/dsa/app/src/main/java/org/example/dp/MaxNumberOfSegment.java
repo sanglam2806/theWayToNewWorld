@@ -25,8 +25,6 @@ public class MaxNumberOfSegment {
 		}
 
 		if (dp[n] ==0) return 0;
-
-
 		return dp[n];
 	}	
 }

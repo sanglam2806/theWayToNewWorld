@@ -22,6 +22,7 @@ fn canBeTypedWords(text:[]const u8, brokenletters: []const u8) i32 {
             check = true;
             rs += 1;
         }
+
         else {
             const index :usize = @intCast(c - 'a');
             if(lettersCheck[index] and check) {

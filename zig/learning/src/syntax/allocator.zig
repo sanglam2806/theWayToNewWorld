@@ -1,4 +1,5 @@
 const std = @import("std");
+const Allocator = std.mem.Allocator;
 
 pub const User = struct {
     name : []const u8,
@@ -12,15 +13,7 @@ pub fn main() !void {
     defer _= gpa.deinit();
 
     const allocator = gpa.allocator();
-    // var nums = try allocator.alloc(usize, 10);
-    // defer allocator.free(nums);
-    //
-    // for(0..10) |i| {
-    //     nums[i] = i; 
-    // }
-    //
-    // std.debug.print("{any}\n", .{nums});
-    //
+
     // create user in heap
     var user = try allocator.create(User);
     defer allocator.destroy(user);
@@ -36,3 +29,24 @@ pub fn main() !void {
 fn levelUp(user: *User) void {
     user.level += 5;
 } 
+
+pub const UserMem = struct {
+    name : []const u8,
+    age :i8,
+    allocalor : Allocator, 
+
+    fn init(allocator: Allocator, name: [] const u8, age:i8) !UserMem{
+        const user = try allocator.create(UserMem);
+        user.*  = .{
+            .name = name,
+            .age = age,
+            .allocator = allocator,
+        };
+
+        return user;
+    }
+
+    fn deinit(self: *UserMem) !void {
+        selft.allocator.destroy(self);
+    }
+};

@@ -21,7 +21,7 @@ fn countValid(num :i32) !i64 {
     for(dp) |*row| {
         row.* = try allocator.alloc(usize, m);
         for (row.*) |*val| val.* = 0;
-        // defer allocator.free(row.*);
+        defer allocator.free(row.*);
     }
 
     for(0.. m) |i| {

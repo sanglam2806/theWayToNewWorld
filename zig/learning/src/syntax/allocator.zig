@@ -47,6 +47,6 @@ pub const UserMem = struct {
     }
 
     fn deinit(self: *UserMem) !void {
-        selft.allocator.destroy(self);
+        self.allocator.destroy(self);
     }
 };

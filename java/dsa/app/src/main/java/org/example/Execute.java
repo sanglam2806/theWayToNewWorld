@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import org.example.HashTablePro.LengthOfLongestSubString;
 import org.example.SlidingWindows.MinimumSizeArraySum;
 import org.example.daily.ValidTriangleNumber;
+import org.example.daily.ZigzacConvertion;
 import org.example.dp.MaxNumberOfSegment;
 
 public class Execute {
@@ -29,8 +30,15 @@ public class Execute {
 		// executeMinimumSizeArraySum();
 		// executeCompareVersionNUmberc();
 		// executeValidTriangleNumber();
-		exeMaxNumberSegment();
+		// exeMaxNumberSegment();
+		exeZigzacConvertion();
 
+	}
+
+	private static void exeZigzacConvertion() {
+		ZigzacConvertion exe = new ZigzacConvertion();
+		String s = "PAYPALISHIRING";
+		System.out.println(exe.convert2(s, 3));
 	}
 
 	private static void exeMaxNumberSegment(){

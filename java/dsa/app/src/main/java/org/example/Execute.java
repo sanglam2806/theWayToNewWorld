@@ -8,6 +8,7 @@ import org.example.HashTablePro.LengthOfLongestSubString;
 import org.example.SlidingWindows.MinimumSizeArraySum;
 import org.example.daily.ValidTriangleNumber;
 import org.example.daily.ZigzacConvertion;
+import org.example.dfs.BalancerNumber;
 import org.example.dp.MaxNumberOfSegment;
 
 public class Execute {
@@ -31,8 +32,14 @@ public class Execute {
 		// executeCompareVersionNUmberc();
 		// executeValidTriangleNumber();
 		// exeMaxNumberSegment();
-		exeZigzacConvertion();
+		// exeZigzacConvertion();
+		exeBalancerNumber();
 
+	}
+
+	private static void exeBalancerNumber() {
+		BalancerNumber exe = new BalancerNumber();
+		System.out.println(" rs = " + exe.nextBeautifulNumber(2000));
 	}
 
 	private static void exeZigzacConvertion() {

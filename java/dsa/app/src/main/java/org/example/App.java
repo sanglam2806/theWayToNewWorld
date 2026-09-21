@@ -4,43 +4,21 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+	public String getGreeting() {
+		return "Hello World!";
+	}
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-		int[] nums = {3,5,6,7};
-		int target = 9;
-		System.out.println("Result is " + numSubseq(nums, target));
+	public static void main(String[] args) {
+		System.out.println(new App().getGreeting());
+	}
 
 
-		int test = (int)Math.pow(2, 2); 
-		System.out.println("Test = " + test) ;
-    }
+	public boolean containsDuplicate(int[] nums) {
+		return false;
+	}
 
-	public static int numSubseq(int[] nums, int target) {
-		int mod = 1000000007;
-
-        Arrays.sort(nums);
-
-        int firstIndex = 0;
-        int lastIndex = nums.length - 1;
-
-        int result = 0;
-
-        while (lastIndex >= firstIndex) {
-            if (nums[firstIndex] + nums[lastIndex] > target) {
-                lastIndex = lastIndex - 1;
-            } else {
-				System.out.println("Na-chan index "+ (lastIndex - firstIndex));
-                result += (int)(Math.pow(2, lastIndex - firstIndex)%mod);
-                firstIndex += 1;
-            }
-        }
-
-        return result;
-    }
 }

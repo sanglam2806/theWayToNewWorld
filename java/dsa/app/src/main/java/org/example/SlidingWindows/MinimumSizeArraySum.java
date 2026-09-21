@@ -19,5 +19,6 @@ public class MinimumSizeArraySum {
 		}
 
 		return rs == Integer.MAX_VALUE ? 0 : rs;
+		
     }
 }
